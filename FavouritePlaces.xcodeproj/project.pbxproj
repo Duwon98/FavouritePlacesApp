@@ -16,10 +16,8 @@
 		00C2E2D6281EC5E400EEDCA6 /* FavouritePlacesTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00C2E2D5281EC5E400EEDCA6 /* FavouritePlacesTests.swift */; };
 		00C2E2E0281EC5E400EEDCA6 /* FavouritePlacesUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00C2E2DF281EC5E400EEDCA6 /* FavouritePlacesUITests.swift */; };
 		00C2E2E2281EC5E400EEDCA6 /* FavouritePlacesUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00C2E2E1281EC5E400EEDCA6 /* FavouritePlacesUITestsLaunchTests.swift */; };
-		00C2E2F2281EC84B00EEDCA6 /* FavouritePlaces+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00C2E2EE281EC84B00EEDCA6 /* FavouritePlaces+CoreDataClass.swift */; };
-		00C2E2F3281EC84B00EEDCA6 /* FavouritePlaces+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00C2E2EF281EC84B00EEDCA6 /* FavouritePlaces+CoreDataProperties.swift */; };
-		00C2E2F4281EC84B00EEDCA6 /* Place+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00C2E2F0281EC84B00EEDCA6 /* Place+CoreDataClass.swift */; };
-		00C2E2F5281EC84B00EEDCA6 /* Place+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00C2E2F1281EC84B00EEDCA6 /* Place+CoreDataProperties.swift */; };
+		00F10241281FAFD300D223E8 /* MasterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00F10240281FAFD300D223E8 /* MasterView.swift */; };
+		00F10243281FB2C900D223E8 /* FavouritePlaces+ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00F10242281FB2C900D223E8 /* FavouritePlaces+ViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -56,6 +54,8 @@
 		00C2E2EF281EC84B00EEDCA6 /* FavouritePlaces+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "FavouritePlaces+CoreDataProperties.swift"; path = "FavouritePlaces/Generated/FavouritePlaces+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		00C2E2F0281EC84B00EEDCA6 /* Place+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "Place+CoreDataClass.swift"; path = "FavouritePlaces/Generated/Place+CoreDataClass.swift"; sourceTree = "<group>"; };
 		00C2E2F1281EC84B00EEDCA6 /* Place+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "Place+CoreDataProperties.swift"; path = "FavouritePlaces/Generated/Place+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		00F10240281FAFD300D223E8 /* MasterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MasterView.swift; sourceTree = "<group>"; };
+		00F10242281FB2C900D223E8 /* FavouritePlaces+ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FavouritePlaces+ViewModel.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -112,6 +112,8 @@
 			children = (
 				00C2E2BF281EC5E300EEDCA6 /* FavouritePlacesApp.swift */,
 				00C2E2C1281EC5E300EEDCA6 /* ContentView.swift */,
+				00F10240281FAFD300D223E8 /* MasterView.swift */,
+				00F10242281FB2C900D223E8 /* FavouritePlaces+ViewModel.swift */,
 				00C2E2C3281EC5E400EEDCA6 /* Assets.xcassets */,
 				00C2E2C8281EC5E400EEDCA6 /* Persistence.swift */,
 				00C2E2CA281EC5E400EEDCA6 /* FavouritePlaces.xcdatamodeld */,
@@ -275,12 +277,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				00F10243281FB2C900D223E8 /* FavouritePlaces+ViewModel.swift in Sources */,
 				00C2E2C9281EC5E400EEDCA6 /* Persistence.swift in Sources */,
-				00C2E2F5281EC84B00EEDCA6 /* Place+CoreDataProperties.swift in Sources */,
-				00C2E2F3281EC84B00EEDCA6 /* FavouritePlaces+CoreDataProperties.swift in Sources */,
-				00C2E2F4281EC84B00EEDCA6 /* Place+CoreDataClass.swift in Sources */,
+				00F10241281FAFD300D223E8 /* MasterView.swift in Sources */,
 				00C2E2CC281EC5E400EEDCA6 /* FavouritePlaces.xcdatamodeld in Sources */,
-				00C2E2F2281EC84B00EEDCA6 /* FavouritePlaces+CoreDataClass.swift in Sources */,
 				00C2E2C2281EC5E300EEDCA6 /* ContentView.swift in Sources */,
 				00C2E2C0281EC5E300EEDCA6 /* FavouritePlacesApp.swift in Sources */,
 			);
