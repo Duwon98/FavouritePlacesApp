@@ -9,6 +9,6 @@ import Foundation
 
 extension FavouritePlaces{
     var placeArray: [Place] {
-        
+        places?.array as? [Place] ?? []
     }
 }
