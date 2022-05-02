@@ -15,7 +15,7 @@ struct PersistenceController {
         let viewContext = result.container.viewContext
         for _ in 0..<10 {
             let places = FavouritePlaces(context: viewContext)
-            places.name = "Duwon's favourite places"
+            places.name = "Favourite places"
             
             
         }
