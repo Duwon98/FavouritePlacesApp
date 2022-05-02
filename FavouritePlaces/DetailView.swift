@@ -12,7 +12,21 @@ struct DetailView: View {
     @Environment(\.managedObjectContext) var viewContext
     
     var body: some View {
-        Text("Hello")
+        VStack{
+            Text(place.url ?? "Defult")
+            Text(place.location ?? "Defult")
+            TextField((place.note ?? "Defult"), text:Binding(get: {place.note ?? ""}, set: {place.note = $0}),
+                onCommit: {
+                do {
+                    try viewContext.save()
+                } catch {
+                    // Replace this implementation with code to handle the error appropriately.
+                    // fatalError() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
+                    let nsError = error as NSError
+                    fatalError("Unresolved error \(nsError), \(nsError.userInfo)")
+                }
+            })
+        }.navigationTitle(place.name ?? "Defult")
     }
 }
 

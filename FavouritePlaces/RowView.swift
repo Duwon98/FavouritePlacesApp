@@ -12,7 +12,7 @@ struct RowView: View {
     @Environment(\.managedObjectContext) var viewContext
     
     var body: some View {
-        NavigationLink("\(place.entity.description)"){
+        NavigationLink("\(place.name ?? "This is Defult")"){
             DetailView(place: place)
         }
     }
