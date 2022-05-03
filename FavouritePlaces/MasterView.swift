@@ -18,6 +18,7 @@ struct MasterView: View {
             }
             .onDelete(perform: deleteItems)
         }
+        .navigationTitle("Favourite Places")
         .toolbar {
             ToolbarItem(placement: .navigationBarTrailing) {
                 EditButton()
@@ -63,4 +64,6 @@ struct MasterView: View {
             }
         }
     }
+    
+    
 }

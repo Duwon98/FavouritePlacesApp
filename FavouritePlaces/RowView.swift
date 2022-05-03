@@ -12,13 +12,31 @@ struct RowView: View {
     @Environment(\.managedObjectContext) var viewContext
     
     var body: some View {
-        NavigationLink(
-            "\(Image("https://en.wikipedia.org/wiki/File:Sydney_Australia._(21339175489).jpg")) \(place.name ?? "No name")", destination: DetailView(place: place))
+
+//        AsyncImage(url: URL(string: place.url ?? "")) { image in
+//            image.resizable()
+//        } placeholder: {
+//            Image(systemName: "photo")
+//        }
+//        .frame(width: 40, height: 40)
+//        .clipShape(RoundedRectangle(cornerRadius: 25))
+        
+        NavigationLink("\(place.name ?? "" )"){
+            DetailView(place: place)
+        }
+
     }
 
 //struct RowView_Previews: PreviewProvider {
 //    static var previews: some View {
 //        RowView()
 //    }
+
 }
 
+//        NavigationLink(
+//            """
+//            \(Image(systemName: "photo").data(url: URL(string: place.url ?? "defult")!)
+//            )
+//            """
+//            , destination: DetailView(place: place))

@@ -92,7 +92,12 @@ struct DetailView: View {
                 
             }
             else{
-                Image(systemName: "photo")
+                AsyncImage(url: URL(string: place.url ?? "")) { image in
+                    image.resizable()
+                } placeholder: {
+                    Image(systemName: "photo")
+                }
+                .frame(width: 260, height: 200)
                 Text(place.note ?? " ")
                 Text("Latitude: " + String(place.latitude))
                 Text("Longitude: " + String(place.longitude))
