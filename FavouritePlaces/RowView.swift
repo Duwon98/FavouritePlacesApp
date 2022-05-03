@@ -13,7 +13,7 @@ struct RowView: View {
     
     var body: some View {
         NavigationLink(
-            "\(Image(systemName: "photo")) \(place.name ?? "No name")", destination: DetailView(place: place))
+            "\(Image("https://en.wikipedia.org/wiki/File:Sydney_Australia._(21339175489).jpg")) \(place.name ?? "No name")", destination: DetailView(place: place))
     }
 
 //struct RowView_Previews: PreviewProvider {

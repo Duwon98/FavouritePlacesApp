@@ -20,6 +20,7 @@ extension Place {
     @NSManaged public var url: String?
     @NSManaged public var latitude: Float
     @NSManaged public var longitude: Float
+    @NSManaged public var note: String?
     @NSManaged public var favouritePlaces: FavouritePlaces?
 
 }
