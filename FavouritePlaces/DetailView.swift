@@ -14,8 +14,7 @@ struct DetailView: View {
     var body: some View {
         VStack{
             Text(place.url ?? "Defult")
-            Text(place.location ?? "Defult")
-            TextField((place.note ?? "Defult"), text:Binding(get: {place.note ?? ""}, set: {place.note = $0}),
+            TextField((place.name ?? "Defult"), text:Binding(get: {place.name ?? ""}, set: {place.name = $0}),
                 onCommit: {
                 do {
                     try viewContext.save()

@@ -41,6 +41,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		004387EE2821026E00FB9505 /* Place+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "Place+CoreDataClass.swift"; path = "FavouritePlaces/Generated/Place+CoreDataClass.swift"; sourceTree = "<group>"; };
+		004387EF2821026E00FB9505 /* Place+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "Place+CoreDataProperties.swift"; path = "FavouritePlaces/Generated/Place+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		004387F02821026E00FB9505 /* FavouritePlaces+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "FavouritePlaces+CoreDataClass.swift"; path = "FavouritePlaces/Generated/FavouritePlaces+CoreDataClass.swift"; sourceTree = "<group>"; };
+		004387F12821026F00FB9505 /* FavouritePlaces+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "FavouritePlaces+CoreDataProperties.swift"; path = "FavouritePlaces/Generated/FavouritePlaces+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		00C2E2BC281EC5E300EEDCA6 /* FavouritePlaces.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FavouritePlaces.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		00C2E2BF281EC5E300EEDCA6 /* FavouritePlacesApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavouritePlacesApp.swift; sourceTree = "<group>"; };
 		00C2E2C1281EC5E300EEDCA6 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -55,10 +59,6 @@
 		00C2E2E1281EC5E400EEDCA6 /* FavouritePlacesUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavouritePlacesUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		00F10240281FAFD300D223E8 /* MasterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MasterView.swift; sourceTree = "<group>"; };
 		00F10242281FB2C900D223E8 /* FavouritePlaces+ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FavouritePlaces+ViewModel.swift"; sourceTree = "<group>"; };
-		00F10244281FB6A400D223E8 /* FavouritePlaces+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "FavouritePlaces+CoreDataClass.swift"; path = "FavouritePlaces/Generated/FavouritePlaces+CoreDataClass.swift"; sourceTree = "<group>"; };
-		00F10245281FB6A400D223E8 /* FavouritePlaces+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "FavouritePlaces+CoreDataProperties.swift"; path = "FavouritePlaces/Generated/FavouritePlaces+CoreDataProperties.swift"; sourceTree = "<group>"; };
-		00F10246281FB6A500D223E8 /* Place+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "Place+CoreDataClass.swift"; path = "FavouritePlaces/Generated/Place+CoreDataClass.swift"; sourceTree = "<group>"; };
-		00F10247281FB6A500D223E8 /* Place+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "Place+CoreDataProperties.swift"; path = "FavouritePlaces/Generated/Place+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		00F1024C281FBBBD00D223E8 /* RowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RowView.swift; sourceTree = "<group>"; };
 		00F1024E281FBC3E00D223E8 /* DetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailView.swift; sourceTree = "<group>"; };
 		00F10250281FCC1600D223E8 /* toUnwrapped.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = toUnwrapped.swift; sourceTree = "<group>"; };
@@ -92,10 +92,10 @@
 		00C2E2B3281EC5E300EEDCA6 = {
 			isa = PBXGroup;
 			children = (
-				00F10244281FB6A400D223E8 /* FavouritePlaces+CoreDataClass.swift */,
-				00F10245281FB6A400D223E8 /* FavouritePlaces+CoreDataProperties.swift */,
-				00F10246281FB6A500D223E8 /* Place+CoreDataClass.swift */,
-				00F10247281FB6A500D223E8 /* Place+CoreDataProperties.swift */,
+				004387EE2821026E00FB9505 /* Place+CoreDataClass.swift */,
+				004387EF2821026E00FB9505 /* Place+CoreDataProperties.swift */,
+				004387F02821026E00FB9505 /* FavouritePlaces+CoreDataClass.swift */,
+				004387F12821026F00FB9505 /* FavouritePlaces+CoreDataProperties.swift */,
 				00C2E2BE281EC5E300EEDCA6 /* FavouritePlaces */,
 				00C2E2D4281EC5E400EEDCA6 /* FavouritePlacesTests */,
 				00C2E2DE281EC5E400EEDCA6 /* FavouritePlacesUITests */,

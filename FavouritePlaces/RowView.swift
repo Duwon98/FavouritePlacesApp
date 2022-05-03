@@ -12,9 +12,8 @@ struct RowView: View {
     @Environment(\.managedObjectContext) var viewContext
     
     var body: some View {
-        NavigationLink("\(place.name ?? "This is Defult")"){
-            DetailView(place: place)
-        }
+        NavigationLink(
+            "\(Image(systemName: "photo")) \(place.name ?? "No name")", destination: DetailView(place: place))
     }
 
 //struct RowView_Previews: PreviewProvider {
@@ -22,3 +21,4 @@ struct RowView: View {
 //        RowView()
 //    }
 }
+
