@@ -17,13 +17,14 @@ struct MasterView: View {
                 RowView(place: place)
             }
             .onDelete(perform: deleteItems)
+            .onMove(perform: move)
         }
         .navigationTitle("Favourite Places")
         .toolbar {
             ToolbarItem(placement: .navigationBarTrailing) {
                 EditButton()
             }
-            ToolbarItem {
+            ToolbarItem(placement: .navigationBarLeading) {
                 Button(action: addItem) {
                     Label("Add Item", systemImage: "plus")
                 }
@@ -63,6 +64,22 @@ struct MasterView: View {
                 fatalError("Unresolved error \(nsError), \(nsError.userInfo)")
             }
         }
+    }
+    
+    func move(from source: IndexSet, to destination: Int) {
+//        let itemToMove = source.first!
+//
+//        if itemToMove < destination {
+//            var startIndex = itemToMove + 1
+//            let endIndex = destination + 1
+//            var startOrder = favPlaces.placeArray[itemToMove]
+//        }
+//        else if destination < itemToMove{
+//
+//        }
+        
+
+
     }
     
     
