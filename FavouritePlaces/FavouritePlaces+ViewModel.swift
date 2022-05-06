@@ -17,6 +17,40 @@ extension FavouritePlaces{
         }
     }
     
+    var placeURL: String {
+        get {url ?? ""}
+        set {
+            url = newValue
+            save()
+        }
+    }
+    
+    var placeNote: String {
+        get {note ?? ""}
+        set {
+            note = newValue
+            save()
+        }
+    }
+    
+    var placeLatitude: String {
+        get { String(latitude)}
+        set {
+            guard let lat = Float(newValue) else {return}
+            latitude = lat
+            save()
+        }
+    }
+    
+    var placeLongitude: String {
+        get { String(longitude)}
+        set {
+            guard let lat = Float(newValue) else {return}
+            longitude = lat
+            save()
+        }
+    }
+    
     /// you don't get warning from non-Checking
     @discardableResult
     func save() -> Bool {

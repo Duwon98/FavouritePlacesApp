@@ -13,16 +13,15 @@ struct RowView: View {
     
     var body: some View {
         HStack{
-        AsyncImage(url: URL(string: place.url ?? "")) { image in
+            AsyncImage(url: URL(string: place.placeURL)) { image in
             image.resizable()
         } placeholder: {
             Image(systemName: "photo")
         }
         .frame(width: 40, height: 40)
-        
-            NavigationLink("\(place.placeName)"){
-            DetailView(place: place)
-            }
+            NavigationLink("\(place.placeName)\n"+"\(place.placeNote)"){
+                DetailView(place: place)}
+
         }
     }
 }
