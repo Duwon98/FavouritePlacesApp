@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct DetailView: View {
-    @ObservedObject var place: Place
+    @ObservedObject var place: FavouritePlaces
     @Environment(\.managedObjectContext) var viewContext
     @Environment(\.editMode) var mode
     let formatter: NumberFormatter = {
@@ -103,7 +103,7 @@ struct DetailView: View {
                 Text("Longitude: " + String(place.longitude))
             }
         }
-        .navigationTitle(place.name ?? "Defult")
+        .navigationTitle(place.placeName)
         .toolbar {
             ToolbarItem(placement: .navigationBarTrailing) {
                 EditButton()

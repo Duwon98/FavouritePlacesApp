@@ -2,7 +2,7 @@
 //  FavouritePlaces+CoreDataClass.swift
 //  FavouritePlaces
 //
-//  Created by Duwon Ha on 3/5/2022.
+//  Created by Duwon Ha on 6/5/2022.
 //
 //
 

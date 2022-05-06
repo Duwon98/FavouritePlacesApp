@@ -1,23 +1,30 @@
 //
-//  MasterView.swift
+//  ContentView.swift
 //  FavouritePlaces
 //
-//  Created by Duwon Ha on 3/5/2022.
+//  Created by Duwon Ha on 1/5/2022.
 //
 
 import SwiftUI
+import CoreData
 
 struct MasterView: View {
-    @ObservedObject var favPlaces : FavouritePlaces
-    @Environment(\.managedObjectContext) var viewContext
+    @Environment(\.managedObjectContext) private var viewContext
+
+    @FetchRequest(
+        sortDescriptors: [NSSortDescriptor(keyPath: \FavouritePlaces.name, ascending: true)],
+        animation: .default)
+    private var favPlaces: FetchedResults<FavouritePlaces>
+
+
+var body: some View {
     
-    var body: some View {
+    NavigationView{
         List {
-            ForEach(favPlaces.placeArray) { place in
+            ForEach(favPlaces) { place in
                 RowView(place: place)
             }
             .onDelete(perform: deleteItems)
-            .onMove(perform: move)
         }
         .navigationTitle("Favourite Places")
         .toolbar {
@@ -27,6 +34,7 @@ struct MasterView: View {
             ToolbarItem(placement: .navigationBarLeading) {
                 Button(action: addItem) {
                     Label("Add Item", systemImage: "plus")
+                    }
                 }
             }
         }
@@ -34,11 +42,9 @@ struct MasterView: View {
     
     private func addItem() {
         withAnimation {
-            let place = Place(context: viewContext)
-            place.name = "New Place"
-            var places = favPlaces.placeArray
-            places.append(place)
-            favPlaces.places = NSOrderedSet(array: places)
+            let newPlace = FavouritePlaces(context: viewContext)
+            let lastAsci = String(UnicodeScalar(UInt8(127)))
+            newPlace.name = "\(lastAsci)New place"
             
             do {
                 try viewContext.save()
@@ -53,7 +59,7 @@ struct MasterView: View {
 
     private func deleteItems(offsets: IndexSet) {
         withAnimation {
-            offsets.map { favPlaces.placeArray[$0] }.forEach(viewContext.delete)
+            offsets.map { favPlaces[$0] }.forEach(viewContext.delete)
 
             do {
                 try viewContext.save()
@@ -65,22 +71,15 @@ struct MasterView: View {
             }
         }
     }
-    
-    func move(from source: IndexSet, to destination: Int) {
-//        let itemToMove = source.first!
-//
-//        if itemToMove < destination {
-//            var startIndex = itemToMove + 1
-//            let endIndex = destination + 1
-//            var startOrder = favPlaces.placeArray[itemToMove]
-//        }
-//        else if destination < itemToMove{
-//
-//        }
-        
-
-
-    }
-    
-    
 }
+    
+//
+//
+//
+//struct ContentView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        ContentView().environment(\.managedObjectContext, PersistenceController.preview.container.viewContext)
+//    }
+//}
+//
+//

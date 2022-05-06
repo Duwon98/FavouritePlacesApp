@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct RowView: View {
-    @ObservedObject var place: Place
+    @ObservedObject var place: FavouritePlaces
     @Environment(\.managedObjectContext) var viewContext
     
     var body: some View {
@@ -20,7 +20,7 @@ struct RowView: View {
         }
         .frame(width: 40, height: 40)
         
-        NavigationLink("\(place.name ?? "" )"){
+            NavigationLink("\(place.placeName)"){
             DetailView(place: place)
             }
         }
