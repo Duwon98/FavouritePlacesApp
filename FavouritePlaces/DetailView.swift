@@ -13,29 +13,23 @@ struct DetailView: View {
     @Environment(\.editMode) var mode
     @State var latitude = ""
     @State var longtitude = ""
-//    let formatter: NumberFormatter = {
-//        let formatter = NumberFormatter()
-//        formatter.numberStyle = .decimal
-//        formatter.maximumFractionDigits = 3
-//        return formatter
-//    }()
-    
 
-    
     var body: some View {
         List{
-            /// if it's edit mode
+            /// If it's edit mode
             if self.mode?.wrappedValue.isEditing ?? true  {
+                /// User can modify the TextField
                 TextField((place.placeName), text: $place.placeName)
-                
+                /// User can modify the URL
                 TextField(("Enter Image URL"), text: $place.placeURL )
-                
+
                 Text("Enter Location Details: ")
                     .font(.system(size: 17, weight: .heavy, design: .default))
                     .frame(maxWidth: .infinity, alignment: .center)
-                
+                /// User can modify the Detail of the place
                 TextField(("Note"), text: $place.placeNote)
                 HStack{
+                    /// In order to optimise with  Automatic completion(with decimal point), Different method is implemented for editing Latitude and Longtitude
                     Text("Latitude: ")
                     TextField((place.placeLatitude), text: $latitude)
                     {
@@ -43,6 +37,7 @@ struct DetailView: View {
                     }
                 }
                 HStack{
+                    /// In order to optimise with  Automatic completion(with decimal point), Different method is implemented for editing Latitude and Longtitude
                     Text("Longitude: ")
                     TextField((place.placeLongitude), text: $longtitude)
                     {
@@ -50,7 +45,9 @@ struct DetailView: View {
                     }
                 }
             }
+            /// If it's not in edit mode
             else{
+                /// Just displaying the values
                 AsyncImage(url: URL(string: place.placeURL)) { image in
                     image.resizable()
                 } placeholder: {

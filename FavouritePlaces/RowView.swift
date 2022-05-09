@@ -13,8 +13,10 @@ struct RowView: View {
     
     var body: some View {
         HStack{
+            /// displaying the Image with Place name and detail of place
             AsyncImage(url: URL(string: place.placeURL)) { image in
             image.resizable()
+                ///default photo
         } placeholder: {
             Image(systemName: "photo")
         }

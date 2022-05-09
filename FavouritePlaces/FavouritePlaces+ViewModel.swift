@@ -8,7 +8,7 @@
 import Foundation
 
 extension FavouritePlaces{
-    /// Non-optional ViewModel property for (optional)  'name' datavase attribute'
+    /// Non-optional ViewModel property for (optional)  attributes of database
     var placeName: String {
         get {name ?? ""}
         set {
@@ -53,6 +53,7 @@ extension FavouritePlaces{
     
     /// you don't get warning from non-Checking
     @discardableResult
+    /// Save Function
     func save() -> Bool {
         do {
             try managedObjectContext?.save()
