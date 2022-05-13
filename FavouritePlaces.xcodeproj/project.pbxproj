@@ -83,6 +83,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0004B8ED282E0FC10040E098 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				00C2E2C1281EC5E300EEDCA6 /* ContentView.swift */,
+				00F1024C281FBBBD00D223E8 /* RowView.swift */,
+				00F1024E281FBC3E00D223E8 /* DetailView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 		00C2E2B3281EC5E300EEDCA6 = {
 			isa = PBXGroup;
 			children = (
@@ -108,10 +118,8 @@
 		00C2E2BE281EC5E300EEDCA6 /* FavouritePlaces */ = {
 			isa = PBXGroup;
 			children = (
+				0004B8ED282E0FC10040E098 /* View */,
 				00C2E2BF281EC5E300EEDCA6 /* FavouritePlacesApp.swift */,
-				00C2E2C1281EC5E300EEDCA6 /* ContentView.swift */,
-				00F1024C281FBBBD00D223E8 /* RowView.swift */,
-				00F1024E281FBC3E00D223E8 /* DetailView.swift */,
 				00F10242281FB2C900D223E8 /* FavouritePlaces+ViewModel.swift */,
 				00C2E2C3281EC5E400EEDCA6 /* Assets.xcassets */,
 				00C2E2C8281EC5E400EEDCA6 /* Persistence.swift */,
