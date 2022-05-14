@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import MapKit
 
 struct DetailView: View {
     @ObservedObject var place: FavouritePlaces
@@ -28,22 +29,22 @@ struct DetailView: View {
                     .frame(maxWidth: .infinity, alignment: .center)
                 /// User can modify the Detail of the place
                 TextField(("Note"), text: $place.placeNote)
-                HStack{
-                    /// In order to optimise with  Automatic completion(with decimal point), Different method is implemented for editing Latitude and Longtitude
-                    Text("Latitude: ")
-                    TextField((place.placeLatitude), text: $latitude)
-                    {
-                        $place.placeLatitude.wrappedValue = latitude
-                    }
-                }
-                HStack{
-                    /// In order to optimise with  Automatic completion(with decimal point), Different method is implemented for editing Latitude and Longtitude
-                    Text("Longitude: ")
-                    TextField((place.placeLongitude), text: $longtitude)
-                    {
-                        $place.placeLongitude.wrappedValue = longtitude
-                    }
-                }
+//                HStack{
+//                    /// In order to optimise with  Automatic completion(with decimal point), Different method is implemented for editing Latitude and Longtitude
+//                    Text("Latitude: ")
+//                    TextField((place.placeLatitude), text: $latitude)
+//                    {
+//                        $place.placeLatitude.wrappedValue = latitude
+//                    }
+//                }
+//                HStack{
+//                    /// In order to optimise with  Automatic completion(with decimal point), Different method is implemented for editing Latitude and Longtitude
+//                    Text("Longitude: ")
+//                    TextField((place.placeLongitude), text: $longtitude)
+//                    {
+//                        $place.placeLongitude.wrappedValue = longtitude
+//                    }
+//                }
             }
             /// If it's not in edit mode
             else{
@@ -54,9 +55,12 @@ struct DetailView: View {
                     Image(systemName: "photo")
                 }
                 .frame(width: 260, height: 200)
+                NavigationLink("Map of \(place.placeName)"){
+                    MapView(place: place)}
+                
                 Text(place.placeNote)
-                Text("Latitude: " + place.placeLatitude)
-                Text("Longitude: " + place.placeLongitude)
+//                Text("Latitude: " + place.placeLatitude)
+//                Text("Longitude: " + place.placeLongitude)
             }
         }
         .navigationTitle(place.placeName)

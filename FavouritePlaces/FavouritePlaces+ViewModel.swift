@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import MapKit
 
 extension FavouritePlaces{
     /// Non-optional ViewModel property for (optional)  attributes of database
@@ -33,10 +34,19 @@ extension FavouritePlaces{
         }
     }
     
+//    var placeLatitude: String {
+//        get { String(latitude)}
+//        set {
+//            guard let lat = Float(newValue) else {return}
+//            latitude = lat
+//            save()
+//        }
+//    }
+    
     var placeLatitude: String {
         get { String(latitude)}
         set {
-            guard let lat = Float(newValue) else {return}
+            guard let lat = CLLocationDegrees(newValue) else {return}
             latitude = lat
             save()
         }
@@ -45,7 +55,7 @@ extension FavouritePlaces{
     var placeLongitude: String {
         get { String(longitude)}
         set {
-            guard let lat = Float(newValue) else {return}
+            guard let lat = CLLocationDegrees(newValue) else {return}
             longitude = lat
             save()
         }
