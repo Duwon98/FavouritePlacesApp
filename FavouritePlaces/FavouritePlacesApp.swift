@@ -6,7 +6,6 @@
 //
 
 import SwiftUI
-
 @main
 struct FavouritePlacesApp: App {
     let persistenceController = PersistenceController.shared

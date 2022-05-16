@@ -23,7 +23,6 @@ struct RowView: View {
         .frame(width: 40, height: 40)
             NavigationLink("\(place.placeName)\n"+"\(place.placeNote)"){
                 DetailView(place: place)}
-
         }
     }
 }

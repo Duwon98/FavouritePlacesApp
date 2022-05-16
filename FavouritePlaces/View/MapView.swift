@@ -10,25 +10,68 @@ import MapKit
 
 struct MapView: View {
     @ObservedObject var place: FavouritePlaces
+    @State var region: MKCoordinateRegion
     @Environment(\.managedObjectContext) var viewContext
+    @Environment(\.editMode) var mode
+    @State var latitude = ""
+    @State var longtitude = ""
 
-
-//    @State private var region = MKCoordinateRegion(center: CLLocationCoordinate2D(latitude: 51.507222, longitude: -0.1275), span: MKCoordinateSpan(latitudeDelta: 0.5, longitudeDelta: 0.5))
-
-    
     var body: some View {
         VStack{
-            Map(coordinateRegion: .constant(MKCoordinateRegion(center: CLLocationCoordinate2D(latitude: place.latitude, longitude: place.longitude), span: MKCoordinateSpan(latitudeDelta: 0.5, longitudeDelta: 0.5))))
+            Map(coordinateRegion: $region)
             
-            HStack{
-                Text("Lat: ")
-                TextField("Enter Latitude", text: $place.placeLatitude)
+            if self.mode?.wrappedValue.isEditing ?? true  {
+                HStack{
+                    Text("Lat: ")
+                    TextField("Enter Longitude", text: $region.latitudeString)
+                }
+//                .onDisappear()
+//                {
+//                    updateMapValuesToCoreData()
+//                    print("This is values from the Map Lat: \(region.latitudeString) Long: \(region.longitudeString)")
+//                }
+                
+                HStack{
+                    Text("Lon: ")
+                    TextField("Enter Longitude", text: $region.longitudeString)
+                }
             }
-            HStack{
-                Text("Lon: ")
-                TextField("Enter Longitude", text: $place.placeLongitude)
+            
+//            HStack{
+//                Text("Lat: ")
+//                TextField((regison.latitudeString), text: $latitude )
+//                {
+//                    $regison.latitudeString.wrappedValue = latitude
+//                }
+//
+//            }
+            
+            else  {
+                HStack{
+                    Text("Latitude: \(region.latitudeString) ")
+                }
+                
+                HStack{
+                    Text("Latitude: \(region.longitudeString) ")
+                }
+                
+                
             }
-        }
+        }.navigationTitle(place.placeName)
+            .toolbar {
+                ToolbarItem(placement: .navigationBarTrailing) {
+                    EditButton()
+                    }
+                }
+            .onDisappear(){
+                updateMapValuesToCoreData()
+            }
+        
+    }
+    
+    func updateMapValuesToCoreData(){
+        $place.placeLatitude.wrappedValue = region.latitudeString
+        $place.placeLongitude.wrappedValue = region.longitudeString
         
     }
 }

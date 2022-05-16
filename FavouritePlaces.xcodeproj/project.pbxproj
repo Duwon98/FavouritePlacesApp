@@ -97,7 +97,6 @@
 				00F1024C281FBBBD00D223E8 /* RowView.swift */,
 				00F1024E281FBC3E00D223E8 /* DetailView.swift */,
 				001B5EDC282FC7FA00F2B8DB /* MapView.swift */,
-				001B5EDE282FCDB900F2B8DB /* CoordinateRegionViewModel.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -139,6 +138,7 @@
 				0004B8ED282E0FC10040E098 /* View */,
 				00C2E2BF281EC5E300EEDCA6 /* FavouritePlacesApp.swift */,
 				00F10242281FB2C900D223E8 /* FavouritePlaces+ViewModel.swift */,
+				001B5EDE282FCDB900F2B8DB /* CoordinateRegionViewModel.swift */,
 				00C2E2C3281EC5E400EEDCA6 /* Assets.xcassets */,
 				00C2E2C8281EC5E400EEDCA6 /* Persistence.swift */,
 				00C2E2CA281EC5E400EEDCA6 /* FavouritePlaces.xcdatamodeld */,

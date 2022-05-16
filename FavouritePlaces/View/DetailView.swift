@@ -12,6 +12,7 @@ struct DetailView: View {
     @ObservedObject var place: FavouritePlaces
     @Environment(\.managedObjectContext) var viewContext
     @Environment(\.editMode) var mode
+    @State private var region = MKCoordinateRegion(center: CLLocationCoordinate2D(latitude: 0, longitude: 0), span: MKCoordinateSpan(latitudeDelta: 0.5, longitudeDelta: 0.5))
     @State var latitude = ""
     @State var longtitude = ""
 
@@ -29,22 +30,7 @@ struct DetailView: View {
                     .frame(maxWidth: .infinity, alignment: .center)
                 /// User can modify the Detail of the place
                 TextField(("Note"), text: $place.placeNote)
-//                HStack{
-//                    /// In order to optimise with  Automatic completion(with decimal point), Different method is implemented for editing Latitude and Longtitude
-//                    Text("Latitude: ")
-//                    TextField((place.placeLatitude), text: $latitude)
-//                    {
-//                        $place.placeLatitude.wrappedValue = latitude
-//                    }
-//                }
-//                HStack{
-//                    /// In order to optimise with  Automatic completion(with decimal point), Different method is implemented for editing Latitude and Longtitude
-//                    Text("Longitude: ")
-//                    TextField((place.placeLongitude), text: $longtitude)
-//                    {
-//                        $place.placeLongitude.wrappedValue = longtitude
-//                    }
-//                }
+
             }
             /// If it's not in edit mode
             else{
@@ -55,12 +41,16 @@ struct DetailView: View {
                     Image(systemName: "photo")
                 }
                 .frame(width: 260, height: 200)
-                NavigationLink("Map of \(place.placeName)"){
-                    MapView(place: place)}
                 
+                HStack{
+//                  Map(coordinateRegion: $region)
+//                    .frame(width: 40, height: 40)
+                NavigationLink("Map of \(place.placeName)"){
+                    MapView(place: place, region: region)
+                    }
+                }
                 Text(place.placeNote)
-//                Text("Latitude: " + place.placeLatitude)
-//                Text("Longitude: " + place.placeLongitude)
+
             }
         }
         .navigationTitle(place.placeName)
@@ -69,6 +59,17 @@ struct DetailView: View {
                 EditButton()
                 }
             }
+        .onAppear()
+        {
+        updateLocation()
+            print("This is value from DetailView Lat: \(place.placeLatitude) Long: \(place.placeLongitude) " )
         }
     }
+    
+    
+    func updateLocation(){
+        $region.latitudeString.wrappedValue = place.placeLatitude
+        $region.longitudeString.wrappedValue = place.placeLongitude
+    }
+}
 
