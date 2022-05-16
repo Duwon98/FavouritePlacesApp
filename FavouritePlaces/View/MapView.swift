@@ -24,35 +24,36 @@ struct MapView: View {
                 HStack{
                     Text("Lat: ")
                     TextField("Enter Longitude", text: $region.latitudeString)
+                    {
+                        updateMapValuesToCoreData()
+                    }
                 }
-//                .onDisappear()
-//                {
-//                    updateMapValuesToCoreData()
-//                    print("This is values from the Map Lat: \(region.latitudeString) Long: \(region.longitudeString)")
-//                }
+                .onDisappear()
+                {
+                    updateMapValuesToCoreData()
+                }
                 
                 HStack{
                     Text("Lon: ")
                     TextField("Enter Longitude", text: $region.longitudeString)
+                    {
+                        updateMapValuesToCoreData()
+                    }
                 }
             }
             
-//            HStack{
-//                Text("Lat: ")
-//                TextField((regison.latitudeString), text: $latitude )
-//                {
-//                    $regison.latitudeString.wrappedValue = latitude
-//                }
-//
-//            }
             
             else  {
                 HStack{
                     Text("Latitude: \(region.latitudeString) ")
+                }.onDisappear()
+                {
+                    reverseToOriginalLocation()
                 }
                 
+                
                 HStack{
-                    Text("Latitude: \(region.longitudeString) ")
+                    Text("Longitude: \(region.longitudeString) ")
                 }
                 
                 
@@ -63,17 +64,21 @@ struct MapView: View {
                     EditButton()
                     }
                 }
-            .onDisappear(){
-                updateMapValuesToCoreData()
-            }
+
         
     }
     
     func updateMapValuesToCoreData(){
         $place.placeLatitude.wrappedValue = region.latitudeString
         $place.placeLongitude.wrappedValue = region.longitudeString
-        
     }
+    
+    func reverseToOriginalLocation(){
+        $region.latitudeString.wrappedValue = place.placeLatitude
+        $region.longitudeString.wrappedValue = place.placeLongitude
+    }
+    
+
 }
 //
 //struct MapView_Previews: PreviewProvider {

@@ -43,8 +43,8 @@ struct DetailView: View {
                 .frame(width: 260, height: 200)
                 
                 HStack{
-//                  Map(coordinateRegion: $region)
-//                    .frame(width: 40, height: 40)
+                  Map(coordinateRegion: $region)
+                    .frame(width: 40, height: 40)
                 NavigationLink("Map of \(place.placeName)"){
                     MapView(place: place, region: region)
                     }
@@ -61,8 +61,7 @@ struct DetailView: View {
             }
         .onAppear()
         {
-        updateLocation()
-            print("This is value from DetailView Lat: \(place.placeLatitude) Long: \(place.placeLongitude) " )
+            updateLocation()
         }
     }
     
