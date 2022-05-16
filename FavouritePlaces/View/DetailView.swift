@@ -59,13 +59,15 @@ struct DetailView: View {
                 EditButton()
                 }
             }
+        /// if DetailView is Appear the region values will be updated from core data
         .onAppear()
         {
             updateLocation()
         }
     }
     
-    
+    /// <#Description#>
+    /// It will update the values of latitude and longitude from coredata to Map element
     func updateLocation(){
         $region.latitudeString.wrappedValue = place.placeLatitude
         $region.longitudeString.wrappedValue = place.placeLongitude
