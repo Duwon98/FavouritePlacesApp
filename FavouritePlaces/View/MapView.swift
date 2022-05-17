@@ -27,6 +27,7 @@ struct MapView: View {
                     {
                         $region.latitudeString.wrappedValue = latitude
                         updateMapValuesToCoreData()
+                        latitude = ""
                     }
                 }
                 ///  if you are quit from edit mode, the changed values will be updated to coredata
@@ -37,9 +38,11 @@ struct MapView: View {
                 
                 HStack{
                     Text("Lon: ")
-                    TextField("Enter Longitude", text: $region.longitudeString)
+                    TextField((region.longitudeString), text: $longtitude)
                     {
+                        $region.longitudeString.wrappedValue = longtitude
                         updateMapValuesToCoreData()
+                        longtitude = ""
                     }
                 }
             }
