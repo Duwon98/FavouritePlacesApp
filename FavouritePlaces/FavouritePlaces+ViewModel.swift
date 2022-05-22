@@ -33,15 +33,7 @@ extension FavouritePlaces{
             save()
         }
     }
-    
-//    var placeLatitude: String {
-//        get { String(latitude)}
-//        set {
-//            guard let lat = Float(newValue) else {return}
-//            latitude = lat
-//            save()
-//        }
-//    }
+
     
     var placeLatitude: String {
         get { String(latitude)}

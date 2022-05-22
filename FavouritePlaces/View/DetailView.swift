@@ -7,11 +7,13 @@
 
 import SwiftUI
 import MapKit
+import CoreLocation
 
 struct DetailView: View {
     @ObservedObject var place: FavouritePlaces
     @Environment(\.managedObjectContext) var viewContext
     @Environment(\.editMode) var mode
+    @StateObject var coordinates = LocationViewModel(location: CLLocation(latitude: 0, longitude: 0))
     @State private var region = MKCoordinateRegion(center: CLLocationCoordinate2D(latitude: 0, longitude: 0), span: MKCoordinateSpan(latitudeDelta: 0.5, longitudeDelta: 0.5))
     @State var latitude = ""
     @State var longtitude = ""
@@ -45,11 +47,15 @@ struct DetailView: View {
                 HStack{
                   Map(coordinateRegion: $region)
                     .frame(width: 40, height: 40)
+                    .disabled(true)
                 NavigationLink("Map of \(place.placeName)"){
                     MapView(place: place, region: region)
                     }
                 }
                 Text(place.placeNote)
+                Text("location Latitude: \(coordinates.latitudeString)")
+                Text("location Longitude: \(coordinates.longitudeString)")
+                
 
             }
         }
@@ -71,6 +77,11 @@ struct DetailView: View {
     func updateLocation(){
         $region.latitudeString.wrappedValue = place.placeLatitude
         $region.longitudeString.wrappedValue = place.placeLongitude
+        $coordinates.latitudeString.wrappedValue = region.latitudeString
+        $coordinates.longitudeString.wrappedValue = region.longitudeString
+        $coordinates.name.wrappedValue = place.placeName
+//        coordinates.lookupCoordinates(for: coordinates.name)
+        coordinates.lookupName(for: coordinates.location)
     }
 }
 

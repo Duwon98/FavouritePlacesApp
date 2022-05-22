@@ -7,10 +7,12 @@
 
 import SwiftUI
 import MapKit
+import CoreLocation
 
 struct MapView: View {
     @ObservedObject var place: FavouritePlaces
     @State var region: MKCoordinateRegion
+//    @ObservedObject var location:CLLocation
     @Environment(\.managedObjectContext) var viewContext
     @Environment(\.editMode) var mode
     @State var latitude = ""

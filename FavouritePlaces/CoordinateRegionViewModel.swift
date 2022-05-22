@@ -7,6 +7,7 @@
 
 import Foundation
 import MapKit
+import CoreLocation
 
 extension MKCoordinateRegion{
     var latitudeString: String {
@@ -24,6 +25,5 @@ extension MKCoordinateRegion{
             center.longitude = degrees
         }
     }
-    
     
 }

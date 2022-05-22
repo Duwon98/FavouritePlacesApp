@@ -10,6 +10,8 @@
 		001B5ED9282FB6F100F2B8DB /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 001B5ED8282FB6F100F2B8DB /* MapKit.framework */; };
 		001B5EDD282FC7FA00F2B8DB /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 001B5EDC282FC7FA00F2B8DB /* MapView.swift */; };
 		001B5EDF282FCDB900F2B8DB /* CoordinateRegionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 001B5EDE282FCDB900F2B8DB /* CoordinateRegionViewModel.swift */; };
+		00521BF4283A68A70094DBE6 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 00521BF3283A68A70094DBE6 /* CoreLocation.framework */; };
+		00521BF9283A74570094DBE6 /* CLLocationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00521BF8283A74570094DBE6 /* CLLocationViewModel.swift */; };
 		00C2E2C0281EC5E300EEDCA6 /* FavouritePlacesApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00C2E2BF281EC5E300EEDCA6 /* FavouritePlacesApp.swift */; };
 		00C2E2C2281EC5E300EEDCA6 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00C2E2C1281EC5E300EEDCA6 /* ContentView.swift */; };
 		00C2E2C4281EC5E400EEDCA6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 00C2E2C3281EC5E400EEDCA6 /* Assets.xcassets */; };
@@ -47,6 +49,8 @@
 		001B5EDE282FCDB900F2B8DB /* CoordinateRegionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoordinateRegionViewModel.swift; sourceTree = "<group>"; };
 		001B5EE0282FD3C400F2B8DB /* FavouritePlaces+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "FavouritePlaces+CoreDataClass.swift"; path = "FavouritePlaces/Generated/FavouritePlaces+CoreDataClass.swift"; sourceTree = "<group>"; };
 		001B5EE1282FD3C400F2B8DB /* FavouritePlaces+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "FavouritePlaces+CoreDataProperties.swift"; path = "FavouritePlaces/Generated/FavouritePlaces+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		00521BF3283A68A70094DBE6 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		00521BF8283A74570094DBE6 /* CLLocationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CLLocationViewModel.swift; sourceTree = "<group>"; };
 		00C2E2BC281EC5E300EEDCA6 /* FavouritePlaces.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FavouritePlaces.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		00C2E2BF281EC5E300EEDCA6 /* FavouritePlacesApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavouritePlacesApp.swift; sourceTree = "<group>"; };
 		00C2E2C1281EC5E300EEDCA6 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -69,6 +73,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				00521BF4283A68A70094DBE6 /* CoreLocation.framework in Frameworks */,
 				001B5ED9282FB6F100F2B8DB /* MapKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -104,6 +109,7 @@
 		001B5ED7282FB6F100F2B8DB /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				00521BF3283A68A70094DBE6 /* CoreLocation.framework */,
 				001B5ED8282FB6F100F2B8DB /* MapKit.framework */,
 			);
 			name = Frameworks;
@@ -137,6 +143,7 @@
 			children = (
 				0004B8ED282E0FC10040E098 /* View */,
 				00C2E2BF281EC5E300EEDCA6 /* FavouritePlacesApp.swift */,
+				00521BF8283A74570094DBE6 /* CLLocationViewModel.swift */,
 				00F10242281FB2C900D223E8 /* FavouritePlaces+ViewModel.swift */,
 				001B5EDE282FCDB900F2B8DB /* CoordinateRegionViewModel.swift */,
 				00C2E2C3281EC5E400EEDCA6 /* Assets.xcassets */,
@@ -306,6 +313,7 @@
 				001B5EDD282FC7FA00F2B8DB /* MapView.swift in Sources */,
 				00F1024F281FBC3E00D223E8 /* DetailView.swift in Sources */,
 				00C2E2C9281EC5E400EEDCA6 /* Persistence.swift in Sources */,
+				00521BF9283A74570094DBE6 /* CLLocationViewModel.swift in Sources */,
 				00F1024D281FBBBD00D223E8 /* RowView.swift in Sources */,
 				00C2E2CC281EC5E400EEDCA6 /* FavouritePlaces.xcdatamodeld in Sources */,
 				001B5EDF282FCDB900F2B8DB /* CoordinateRegionViewModel.swift in Sources */,
