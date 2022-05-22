@@ -53,8 +53,14 @@ struct DetailView: View {
                     }
                 }
                 Text(place.placeNote)
-                Text("location Latitude: \(coordinates.latitudeString)")
-                Text("location Longitude: \(coordinates.longitudeString)")
+                    .padding()
+                
+                HStack{
+                    Label(coordinates.sunrise , systemImage: "sunrise")
+                    Spacer()
+                    Label(coordinates.sunset, systemImage: "sunset")
+                }
+
                 
 
             }

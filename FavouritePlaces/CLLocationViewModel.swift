@@ -10,7 +10,18 @@ import CoreLocation
 
 class LocationViewModel: ObservableObject{
     @Published var location: CLLocation
+    @Published var sunriseSunset = SunriseSunset(sunrise: "unknown", sunset: "unknown")
     @Published var name = ""
+    
+    var sunrise: String{
+        get{ sunriseSunset.sunrise}
+        set{ sunriseSunset.sunrise = newValue}
+    }
+    
+    var sunset: String{
+        get{ sunriseSunset.sunset}
+        set{ sunriseSunset.sunset = newValue}
+    }
     
     init(location: CLLocation){
         self.location = location
@@ -83,5 +94,22 @@ class LocationViewModel: ObservableObject{
             self.name = placemark.name ?? placemark.subAdministrativeArea ?? placemark.locality ?? placemark.subLocality ??
             placemark.thoroughfare ?? placemark.subThoroughfare ?? placemark.country ?? ""
         }
+    }
+    
+    func lookupSunriseAndSunset(){
+        let urlString = "https://api.sunrise-sunset.org/json?lat=\(latitudeString) &lng=\(longitudeString)"
+        guard let url = URL(string: urlString) else{
+            print("Malformed URL: \(urlString)")
+            return
+        }
+        guard let jsonData = try? Data(contentsOf: url) else{
+            print("Could not look up sunrise or sunset")
+            return
+        }
+        guard let api = try? JSONDecoder().decode(SunriseSUnsetAPI.self, from: jsonData) else{
+            print("Could not decode Json API:\n\(String(data: jsonData, encoding: .utf8) ?? "<empty>" )")
+            return
+        }
+            sunriseSunset = api.results
     }
 }
