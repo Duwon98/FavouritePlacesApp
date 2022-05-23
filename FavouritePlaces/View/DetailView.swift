@@ -15,15 +15,17 @@ struct DetailView: View {
     @Environment(\.editMode) var mode
     @StateObject var coordinates = LocationViewModel(location: CLLocation(latitude: 0, longitude: 0))
     @State private var region = MKCoordinateRegion(center: CLLocationCoordinate2D(latitude: 0, longitude: 0), span: MKCoordinateSpan(latitudeDelta: 0.5, longitudeDelta: 0.5))
-    @State var latitude = ""
-    @State var longtitude = ""
+//    @State var latitude = ""
+//    @State var longtitude = ""
 
     var body: some View {
         List{
             /// If it's edit mode
             if self.mode?.wrappedValue.isEditing ?? true  {
                 /// User can modify the TextField
-                TextField((place.placeName), text: $place.placeName)
+                TextField((place.placeName), text: $place.placeName){
+                    $coordinates.name.wrappedValue = place.placeName
+                }
                 /// User can modify the URL
                 TextField(("Enter Image URL"), text: $place.placeURL )
 
@@ -49,7 +51,7 @@ struct DetailView: View {
                     .frame(width: 40, height: 40)
                     .disabled(true)
                 NavigationLink("Map of \(place.placeName)"){
-                    MapView(place: place, region: region)
+                    MapView(place: place, region: region, location: coordinates)
                     }
                 }
                 Text(place.placeNote)
@@ -75,6 +77,8 @@ struct DetailView: View {
         .onAppear()
         {
             updateLocation()
+            
+
         }
     }
     
@@ -83,11 +87,12 @@ struct DetailView: View {
     func updateLocation(){
         $region.latitudeString.wrappedValue = place.placeLatitude
         $region.longitudeString.wrappedValue = place.placeLongitude
-        $coordinates.latitudeString.wrappedValue = region.latitudeString
-        $coordinates.longitudeString.wrappedValue = region.longitudeString
+        $coordinates.latitudeString.wrappedValue = place.placeLatitude
+        $coordinates.longitudeString.wrappedValue = place.placeLongitude
         $coordinates.name.wrappedValue = place.placeName
-//        coordinates.lookupCoordinates(for: coordinates.name)
-        coordinates.lookupName(for: coordinates.location)
+        coordinates.lookupSunriseAndSunset()
+        
+
     }
 }
 

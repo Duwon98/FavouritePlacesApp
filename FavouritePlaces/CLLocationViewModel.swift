@@ -7,11 +7,14 @@
 
 import Combine
 import CoreLocation
+import MapKit
 
 class LocationViewModel: ObservableObject{
     @Published var location: CLLocation
     @Published var sunriseSunset = SunriseSunset(sunrise: "unknown", sunset: "unknown")
     @Published var name = ""
+    
+    
     
     var sunrise: String{
         get{ sunriseSunset.sunrise}
@@ -28,18 +31,19 @@ class LocationViewModel: ObservableObject{
     }
     
     var latitudeString:String {
-        get {" \(location.coordinate.latitude)" }
+        get { "\(location.coordinate.latitude)" }
         set{
-            guard let newLatitude = Double(newValue) else {return}
+            guard let newLatitude = Double(newValue),abs(newLatitude) <= 90 else {return}
             let newLocation = CLLocation(latitude: newLatitude, longitude: location.coordinate.longitude)
             location = newLocation
         }
     }
     
+    
     var longitudeString: String{
         get { "\(location.coordinate.longitude)" }
         set {
-            guard let newLongitude = Double(newValue) else {return}
+            guard let newLongitude = Double(newValue),abs(newLongitude) <= 180 else {return}
             let newLocation = CLLocation(latitude: location.coordinate.latitude, longitude: newLongitude)
             location = newLocation
         }
@@ -89,15 +93,16 @@ class LocationViewModel: ObservableObject{
                 \.thoroughfare,
                 \.subThoroughfare
             ]{
-                print(String(describing: placemark[keyPath: value]))
+//                print(String(describing: placemark[keyPath: value]))
             }
             self.name = placemark.name ?? placemark.subAdministrativeArea ?? placemark.locality ?? placemark.subLocality ??
             placemark.thoroughfare ?? placemark.subThoroughfare ?? placemark.country ?? ""
+            
         }
     }
     
     func lookupSunriseAndSunset(){
-        let urlString = "https://api.sunrise-sunset.org/json?lat=\(latitudeString) &lng=\(longitudeString)"
+        let urlString = "https://api.sunrise-sunset.org/json?lat=\(latitudeString)&lng=\(longitudeString)"
         guard let url = URL(string: urlString) else{
             print("Malformed URL: \(urlString)")
             return
@@ -110,6 +115,22 @@ class LocationViewModel: ObservableObject{
             print("Could not decode Json API:\n\(String(data: jsonData, encoding: .utf8) ?? "<empty>" )")
             return
         }
-            sunriseSunset = api.results
+        let inputFormatter = DateFormatter()
+        inputFormatter.dateStyle = .none
+        inputFormatter.timeStyle = .medium
+        inputFormatter.timeZone = .init(secondsFromGMT: 0)
+        let outputFormatter = DateFormatter()
+        outputFormatter.dateStyle = .none
+        outputFormatter.timeStyle = .medium
+        outputFormatter.timeZone = .current
+        var converted = api.results
+        
+        if let time = inputFormatter.date(from: api.results.sunrise){
+            converted.sunrise = outputFormatter.string(from: time)
+        }
+        if let time = inputFormatter.date(from: api.results.sunset){
+            converted.sunset = outputFormatter.string(from: time)
+        }
+            sunriseSunset = converted
     }
 }
