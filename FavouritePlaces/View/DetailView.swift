@@ -15,8 +15,6 @@ struct DetailView: View {
     @Environment(\.editMode) var mode
     @StateObject var coordinates = LocationViewModel(location: CLLocation(latitude: 0, longitude: 0))
     @State private var region = MKCoordinateRegion(center: CLLocationCoordinate2D(latitude: 0, longitude: 0), span: MKCoordinateSpan(latitudeDelta: 0.5, longitudeDelta: 0.5))
-//    @State var latitude = ""
-//    @State var longtitude = ""
 
     var body: some View {
         List{
