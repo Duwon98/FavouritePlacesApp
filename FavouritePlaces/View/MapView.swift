@@ -39,8 +39,8 @@ struct MapView: View {
                     TextField("", text: $location.name){
                         $place.placeName.wrappedValue = location.name
                         location.lookupCoordinates(for: location.name)
-                        
-                        //need timer here
+//
+//                        need timer here
 //                        updateMapValuesToCoreData()
                         
                     }
@@ -58,7 +58,11 @@ struct MapView: View {
                         //timer
                         latitude = location.latitudeString
                         longtitude = location.longitudeString
-                        updateMapValuesToCoreData()
+                        
+                        $place.placeLatitude.wrappedValue = location.latitudeString
+                        $place.placeLongitude.wrappedValue = location.longitudeString
+                        $region.latitudeString.wrappedValue = location.latitudeString
+                        $region.longitudeString.wrappedValue = location.longitudeString
                         latitude = ""
                         longtitude = ""
                         
