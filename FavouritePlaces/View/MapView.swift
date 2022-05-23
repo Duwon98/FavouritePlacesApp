@@ -18,6 +18,7 @@ struct MapView: View {
     @State var latitude = ""
     @State var longtitude = ""
     @State private var _isLoading: Bool = true
+    @State var mapMoving: Bool = true
 
     var body: some View {
         VStack{
@@ -25,13 +26,9 @@ struct MapView: View {
             if self.mode?.wrappedValue.isEditing ?? true{
                 HStack{
                     Button{
-                        $location.latitudeString.wrappedValue = region.latitudeString
-                        $location.longitudeString.wrappedValue = region.longitudeString
+                        regionToLocation()
                         location.lookupName(for: location.location)
-                        /// need timer here
                         loadingCall()
-//                        $place.placeName.wrappedValue = location.name
-
 
                     } label: {
                         Label("", systemImage: "text.magnifyingglass" )
@@ -39,9 +36,6 @@ struct MapView: View {
                     TextField("", text: $location.name){
                         $place.placeName.wrappedValue = location.name
                         location.lookupCoordinates(for: location.name)
-//
-//                        need timer here
-//                        updateMapValuesToCoreData()
                         
                     }
                 }
@@ -49,24 +43,19 @@ struct MapView: View {
             }
             
             Map(coordinateRegion: $region)
+                .disabled(mapMoving)
             /// if you are in edit mode
             if self.mode?.wrappedValue.isEditing ?? true  {
+                
                 HStack{
                     Button{
-                        
                         location.lookupCoordinates(for: location.name)
-                        //timer
                         latitude = location.latitudeString
                         longtitude = location.longitudeString
-                        
-                        $place.placeLatitude.wrappedValue = location.latitudeString
-                        $place.placeLongitude.wrappedValue = location.longitudeString
-                        $region.latitudeString.wrappedValue = location.latitudeString
-                        $region.longitudeString.wrappedValue = location.longitudeString
+                        coreDataLookupName()
                         latitude = ""
                         longtitude = ""
-                        
-                        
+
                     } label: {
                         Label("", systemImage: "globe.europe.africa.fill" )
                     }
@@ -76,7 +65,7 @@ struct MapView: View {
                             TextField((region.latitudeString), text: $latitude)
                             {
                                 $region.latitudeString.wrappedValue = latitude
-                                updateMapValuesToCoreData()
+//                                updateMapValuesToCoreData()
                                 latitude = ""
                             }
                         }
@@ -84,6 +73,11 @@ struct MapView: View {
                         .onDisappear()
                         {
                             updateMapValuesToCoreData()
+                            
+                        }
+                        .onAppear()
+                        {
+                            mapMoving = false
                         }
                         
                         HStack{
@@ -91,7 +85,7 @@ struct MapView: View {
                             TextField((region.longitudeString), text: $longtitude)
                             {
                                 $region.longitudeString.wrappedValue = longtitude
-                                updateMapValuesToCoreData()
+//                                updateMapValuesToCoreData()
                                 longtitude = ""
                             }
                         }
@@ -112,6 +106,10 @@ struct MapView: View {
                 {
                     reverseToOriginalLocation()
                 }
+                .onAppear()
+                {
+                    mapMoving = true
+                }
                 
                 
                 HStack{
@@ -130,13 +128,28 @@ struct MapView: View {
     
     /// <#Description#>
     /// if you changes the latitude and longitude from edit mode then quit the mode, the changed values will be updated in coredata
+    func coreDataLookupName(){
+        $place.placeLatitude.wrappedValue = location.latitudeString
+        $place.placeLongitude.wrappedValue = location.longitudeString
+        $region.latitudeString.wrappedValue = location.latitudeString
+        $region.longitudeString.wrappedValue = location.longitudeString
+//        $place.placeLatitude.wrappedValue = region.latitudeString
+//        $place.placeLongitude.wrappedValue = region.longitudeString
+//        $place.placeName.wrappedValue = location.name
+//        $location.latitudeString.wrappedValue = region.latitudeString
+//        $location.longitudeString.wrappedValue = region.longitudeString
+    }
     func updateMapValuesToCoreData(){
         $place.placeLatitude.wrappedValue = region.latitudeString
         $place.placeLongitude.wrappedValue = region.longitudeString
         $place.placeName.wrappedValue = location.name
         $location.latitudeString.wrappedValue = region.latitudeString
         $location.longitudeString.wrappedValue = region.longitudeString
-
+    }
+    
+    func regionToLocation(){
+        $location.latitudeString.wrappedValue = region.latitudeString
+        $location.longitudeString.wrappedValue = region.longitudeString
     }
     
     /// <#Description#>

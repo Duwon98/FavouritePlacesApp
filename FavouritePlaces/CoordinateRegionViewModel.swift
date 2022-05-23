@@ -13,7 +13,7 @@ extension MKCoordinateRegion{
     var latitudeString: String {
         get{ "\(center.latitude)" }
         set{
-            guard let degrees = CLLocationDegrees(newValue) else {return}
+            guard let degrees = CLLocationDegrees(newValue), -90 <= abs(degrees), abs(degrees) <= 90 else {return}
             center.latitude = degrees
             
         }
@@ -22,7 +22,7 @@ extension MKCoordinateRegion{
     var longitudeString: String {
         get{ "\(center.longitude)" }
         set{
-            guard let degrees = CLLocationDegrees(newValue) else {return}
+            guard let degrees = CLLocationDegrees(newValue), -180 <= abs(degrees), abs(degrees) <= 180 else {return}
             center.longitude = degrees
         }
     }
