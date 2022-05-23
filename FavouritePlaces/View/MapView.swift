@@ -133,11 +133,7 @@ struct MapView: View {
         $place.placeLongitude.wrappedValue = location.longitudeString
         $region.latitudeString.wrappedValue = location.latitudeString
         $region.longitudeString.wrappedValue = location.longitudeString
-//        $place.placeLatitude.wrappedValue = region.latitudeString
-//        $place.placeLongitude.wrappedValue = region.longitudeString
-//        $place.placeName.wrappedValue = location.name
-//        $location.latitudeString.wrappedValue = region.latitudeString
-//        $location.longitudeString.wrappedValue = region.longitudeString
+
     }
     func updateMapValuesToCoreData(){
         $place.placeLatitude.wrappedValue = region.latitudeString

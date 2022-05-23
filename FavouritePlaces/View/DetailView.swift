@@ -56,9 +56,22 @@ struct DetailView: View {
                     .padding()
                 
                 HStack{
-                    Label(coordinates.sunrise , systemImage: "sunrise")
-                    Spacer()
-                    Label(coordinates.sunset, systemImage: "sunset")
+                    Label{
+                        Text(coordinates.sunrise)
+                            .font(.system(size: 15))
+                    } icon: {
+                        Image(systemName: "sunrise")
+                    }
+                    
+                    Label{
+                        Text(coordinates.sunset)
+                            .font(.system(size: 15))
+                    } icon: {
+                        Image(systemName: "sunset")
+                    }
+//                    Label(coordinates.sunrise,systemImage: "sunrise")
+//                    Spacer()
+//                    Label(coordinates.sunset,systemImage:"sunset")
                 }
 
                 

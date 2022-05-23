@@ -26,5 +26,5 @@ extension MKCoordinateRegion{
             center.longitude = degrees
         }
     }
-    
 }
+
