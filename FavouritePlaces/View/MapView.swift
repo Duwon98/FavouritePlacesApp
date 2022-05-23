@@ -17,6 +17,7 @@ struct MapView: View {
     @Environment(\.editMode) var mode
     @State var latitude = ""
     @State var longtitude = ""
+    @State private var _isLoading: Bool = true
 
     var body: some View {
         VStack{
@@ -28,8 +29,9 @@ struct MapView: View {
                         $location.longitudeString.wrappedValue = region.longitudeString
                         location.lookupName(for: location.location)
                         /// need timer here
-                        $place.placeName.wrappedValue = location.name
-                        
+                        loadingCall()
+//                        $place.placeName.wrappedValue = location.name
+
 
                     } label: {
                         Label("", systemImage: "text.magnifyingglass" )
@@ -128,8 +130,9 @@ struct MapView: View {
         $place.placeLatitude.wrappedValue = region.latitudeString
         $place.placeLongitude.wrappedValue = region.longitudeString
         $place.placeName.wrappedValue = location.name
-        $region.latitudeString.wrappedValue = location.latitudeString
-        $region.longitudeString.wrappedValue = location.longitudeString
+        $location.latitudeString.wrappedValue = region.latitudeString
+        $location.longitudeString.wrappedValue = region.longitudeString
+
     }
     
     /// <#Description#>
@@ -139,6 +142,12 @@ struct MapView: View {
         $region.latitudeString.wrappedValue = place.placeLatitude
         $region.longitudeString.wrappedValue = place.placeLongitude
     }
+
+    func loadingCall(){
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+            $place.placeName.wrappedValue = location.name
+        }
+            }
     
 
 }
