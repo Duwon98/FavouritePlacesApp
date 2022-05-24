@@ -17,12 +17,13 @@ struct MapView: View {
     @Environment(\.editMode) var mode
     @State var latitude = ""
     @State var longtitude = ""
+    /// to make map non-movable for non-edicmode
     @State private var _isLoading: Bool = true
     @State var mapMoving: Bool = true
 
     var body: some View {
         VStack{
-            
+            /// if it's in edit mode
             if self.mode?.wrappedValue.isEditing ?? true{
                 HStack{
                     Button{
@@ -52,7 +53,7 @@ struct MapView: View {
                         location.lookupCoordinates(for: location.name)
                         latitude = location.latitudeString
                         longtitude = location.longitudeString
-                        coreDataLookupName()
+                        lookupCoordinatesCoreData()
                         latitude = ""
                         longtitude = ""
 
@@ -65,16 +66,18 @@ struct MapView: View {
                             TextField((region.latitudeString), text: $latitude)
                             {
                                 $region.latitudeString.wrappedValue = latitude
-//                                updateMapValuesToCoreData()
                                 latitude = ""
                             }
                         }
                         ///  if you are quit from edit mode, the changed values will be updated to coredata
+                        ///  It will also change the value of mapMoving so user can't move their map in Non-edit mode
                         .onDisappear()
                         {
                             updateMapValuesToCoreData()
+                            mapMoving = true
                             
                         }
+                        /// if you are in edit mode, you can move your map
                         .onAppear()
                         {
                             mapMoving = false
@@ -100,18 +103,6 @@ struct MapView: View {
                 HStack{
                     Text("Latitude: \(region.latitudeString) ")
                 }
-                /// You can not change the Latitude and Longitude in non-Edit-Mode
-                ///  the values from map will be back to original values from Core data
-                .onDisappear()
-                {
-                    reverseToOriginalLocation()
-                }
-                .onAppear()
-                {
-                    mapMoving = true
-                }
-                
-                
                 HStack{
                     Text("Longitude: \(region.longitudeString) ")
                 }
@@ -126,15 +117,16 @@ struct MapView: View {
                 }
     }
     
-    /// <#Description#>
-    /// if you changes the latitude and longitude from edit mode then quit the mode, the changed values will be updated in coredata
-    func coreDataLookupName(){
+    ///<#Description#>
+    /// if user press look up coordinates button, the updated values from CLLocation will updates changed values to place(Coredata) and region(Map)
+    func lookupCoordinatesCoreData(){
         $place.placeLatitude.wrappedValue = location.latitudeString
         $place.placeLongitude.wrappedValue = location.longitudeString
         $region.latitudeString.wrappedValue = location.latitudeString
         $region.longitudeString.wrappedValue = location.longitudeString
-
     }
+    /// <#Description#>
+    /// if you changes the latitude and longitude from edit mode then quit the mode, the changed values will be updated in coredata and CLLocation
     func updateMapValuesToCoreData(){
         $place.placeLatitude.wrappedValue = region.latitudeString
         $place.placeLongitude.wrappedValue = region.longitudeString
@@ -142,20 +134,16 @@ struct MapView: View {
         $location.latitudeString.wrappedValue = region.latitudeString
         $location.longitudeString.wrappedValue = region.longitudeString
     }
-    
+    ///<#Description#>
+    /// if user press the look up name function, the CLLocation's latitude and longitude will be updated to the changed latitude and longitude values from region(Map)
+    /// so It will find the place name from changed values.
     func regionToLocation(){
         $location.latitudeString.wrappedValue = region.latitudeString
         $location.longitudeString.wrappedValue = region.longitudeString
     }
-    
-    /// <#Description#>
-    /// you can't change the values in non-edit-mode.
-    /// when you move the map from the view, the values is changing but once you quit the page the orginal values will be updated again.
-    func reverseToOriginalLocation(){
-        $region.latitudeString.wrappedValue = place.placeLatitude
-        $region.longitudeString.wrappedValue = place.placeLongitude
-    }
 
+    /// <#Description#>
+    /// LookupName function from CLLocation takes some time to present the result. In order to match the speed. it will hold it for 0.5 to process it.
     func loadingCall(){
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
             $place.placeName.wrappedValue = location.name

@@ -69,9 +69,6 @@ struct DetailView: View {
                     } icon: {
                         Image(systemName: "sunset")
                     }
-//                    Label(coordinates.sunrise,systemImage: "sunrise")
-//                    Spacer()
-//                    Label(coordinates.sunset,systemImage:"sunset")
                 }
 
                 
@@ -94,7 +91,7 @@ struct DetailView: View {
     }
     
     /// <#Description#>
-    /// It will update the values of latitude and longitude from coredata to Map element
+    /// It will update the values of latitude and longitude from coredata to Map element as well as CLLocation
     func updateLocation(){
         $region.latitudeString.wrappedValue = place.placeLatitude
         $region.longitudeString.wrappedValue = place.placeLongitude

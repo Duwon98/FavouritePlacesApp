@@ -7,6 +7,7 @@
 
 import Foundation
 
+/// In order to decode API
 struct SunriseSunset: Codable{
     var sunrise: String
     var sunset: String

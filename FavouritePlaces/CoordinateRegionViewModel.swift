@@ -9,6 +9,7 @@ import Foundation
 import MapKit
 import CoreLocation
 
+/// MKCoordinateRegion extention for getting and setter for latitude and longitude
 extension MKCoordinateRegion{
     var latitudeString: String {
         get{ "\(center.latitude)" }
