@@ -17,6 +17,9 @@ extension MKCoordinateRegion{
             guard let degrees = CLLocationDegrees(newValue), -90 <= abs(degrees), abs(degrees) <= 90 else {return}
             center.latitude = degrees
             
+            
+            
+            
         }
     }
     

@@ -6,7 +6,7 @@
 //
 
 import Combine
-import CoreLocation
+
 import MapKit
 /// CLLocation view Model
 class LocationViewModel: ObservableObject{
