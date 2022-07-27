@@ -14,5 +14,5 @@ You can search specific place through the map.
 You can edit the impormation about place.
 
 <img src="https://github.com/Duwon98/FavouritePlacesApp/blob/main/Place.png" width="200" />
-** Sunset & Sunrise API has been updated, code needs to be updated as well..**
+** Sunset & Sunrise API recently faced some problem.**
 
